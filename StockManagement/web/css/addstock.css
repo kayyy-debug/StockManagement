@@ -1,0 +1,82 @@
+body {
+font-family: "Segoe UI", sans-serif;
+background-color: #f5f7fa;
+display: flex;
+justify-content: center;
+align-items: center;
+min-height: 100vh;
+}
+
+.add-stock-form {
+background-color: #ffffff;
+padding: 30px 40px;
+border-radius: 12px;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+width: 400px;
+}
+
+.add-stock-form h2 {
+text-align: center;
+color: #003366;
+margin-bottom: 25px;
+}
+
+.add-stock-form input[type="text"],
+.add-stock-form input[type="number"] {
+width: 100%;
+padding: 10px;
+margin: 12px 0;
+border: 1px solid #ccc;
+border-radius: 6px;
+font-size: 14px;
+}
+
+.add-stock-form label {
+font-weight: bold;
+margin-top: 10px;
+display: block;
+color: #333;
+}
+
+.add-stock-form input[type="submit"] {
+width: 100%;
+padding: 12px;
+background-color: #007bff;
+color: white;
+border: none;
+border-radius: 6px;
+font-weight: bold;
+font-size: 16px;
+cursor: pointer;
+margin-top: 20px;
+}
+
+.add-stock-form input[type="submit"]:hover {
+background-color: #0056b3;
+}
+
+.add-stock-form .back-link {
+display: block;
+text-align: center;
+margin-top: 15px;
+color: #007bff;
+text-decoration: none;
+}
+
+.add-stock-form .back-link:hover {
+text-decoration: underline;
+}
+
+.error {
+color: red;
+font-size: 14px;
+text-align: center;
+margin-top: 10px;
+}
+
+.success {
+color: green;
+font-size: 14px;
+text-align: center;
+margin-top: 10px;
+}

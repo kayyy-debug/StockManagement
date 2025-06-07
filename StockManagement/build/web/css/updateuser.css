@@ -1,0 +1,89 @@
+body {
+font-family: "Segoe UI", sans-serif;
+background-color: #f5f7fa;
+display: flex;
+justify-content: center;
+align-items: center;
+min-height: 100vh;
+margin: 0;
+}
+
+.update-user-form {
+background-color: #ffffff;
+padding: 30px 40px;
+border-radius: 12px;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+width: 400px;
+box-sizing: border-box;
+}
+
+.update-user-form h2 {
+text-align: center;
+color: #003366;
+margin-bottom: 25px;
+}
+
+.update-user-form label {
+display: block;
+font-weight: bold;
+margin-top: 10px;
+color: #333;
+}
+
+.update-user-form input[type="text"],
+.update-user-form input[type="password"],
+.update-user-form select {
+width: 100%;
+padding: 10px;
+margin: 10px 0 15px;
+border: 1px solid #ccc;
+border-radius: 6px;
+font-size: 14px;
+box-sizing: border-box;
+}
+
+.update-user-form input[type="submit"] {
+display: block;
+width: 100%;
+padding: 12px;
+background-color: #28a745;
+color: white;
+border: none;
+border-radius: 6px;
+font-weight: bold;
+font-size: 16px;
+cursor: pointer;
+margin-top: 10px;
+box-sizing: border-box;
+}
+
+.update-user-form input[type="submit"]:hover {
+background-color: #218838;
+}
+
+.update-user-form .back-link {
+display: block;
+text-align: center;
+margin-top: 15px;
+color: #007bff;
+text-decoration: none;
+font-weight: bold;
+}
+
+.update-user-form .back-link:hover {
+text-decoration: underline;
+}
+
+.error {
+color: red;
+font-size: 14px;
+text-align: center;
+margin-bottom: 10px;
+}
+
+.success {
+color: green;
+font-size: 14px;
+text-align: center;
+margin-bottom: 10px;
+}
