@@ -36,7 +36,7 @@ public class StockDAO {
                     return new StockDTO(
                             rs.getInt("stockID"),
                             rs.getString("ticker"),
-                            rs.getString("companyName"),
+                            rs.getString("sector"),
                             rs.getDouble("price"),
                             rs.getBoolean("status")
                     );
@@ -50,7 +50,7 @@ public class StockDAO {
         String sql = "INSERT INTO tblStocks (ticker, companyName, price, status) VALUES (?, ?, ?, ?)";
         try ( Connection conn = DBUtil.getConnection();  PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, stock.getTicker());
-            ps.setString(2, stock.getCompanyName());
+            ps.setString(2, stock.getSector());
             ps.setDouble(3, stock.getPrice());
             ps.setBoolean(4, stock.isStatus());
             return ps.executeUpdate() > 0;
@@ -60,7 +60,7 @@ public class StockDAO {
     public boolean updateStock(StockDTO stock) throws SQLException {
         String sql = "UPDATE tblStocks SET companyName = ?, price = ?, status = ? WHERE ticker = ?";
         try ( Connection conn = DBUtil.getConnection();  PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, stock.getCompanyName());
+            ps.setString(1, stock.getSector());
             ps.setDouble(2, stock.getPrice());
             ps.setBoolean(3, stock.isStatus());
             ps.setString(4, stock.getTicker());

@@ -4,17 +4,17 @@ public class StockDTO {
 
     private int stockID;
     private String ticker;
-    private String companyName;
+    private String sector;
     private double price;
     private boolean status;
 
     public StockDTO() {
     }
 
-    public StockDTO(int stockID, String ticker, String companyName, double price, boolean status) {
+    public StockDTO(int stockID, String ticker, String sector, double price, boolean status) {
         this.stockID = stockID;
         this.ticker = ticker;
-        this.companyName = companyName;
+        this.sector = sector;
         this.price = price;
         this.status = status;
     }
@@ -35,12 +35,12 @@ public class StockDTO {
         this.ticker = ticker;
     }
 
-    public String getCompanyName() {
-        return companyName;
+    public String getSector() {
+        return sector;
     }
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
+    public void setSector(String sector) {
+        this.sector = sector;
     }
 
     public double getPrice() {
@@ -58,4 +58,5 @@ public class StockDTO {
     public void setStatus(boolean status) {
         this.status = status;
     }
+    
 }

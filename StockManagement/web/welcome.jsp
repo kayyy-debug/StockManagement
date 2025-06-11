@@ -27,6 +27,7 @@
                 <li><a href="MainController?action=ListUsers">👤 Quản lý người dùng</a></li>
                     <% } %>
                 <li><a href="MainController?action=ListAlert"> Quản lý cảnh báo đầu tư</a> </li>
+                <li><a href="MainController?action=ListNews">Quan li tin tuc<a/></li>
                 <li><a href="MainController?action=Logout">🚪 Đăng xuất</a></li>
             </ul>
         </div>

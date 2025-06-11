@@ -5,8 +5,8 @@ import dto.*;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
-
 import java.io.IOException;
+import java.sql.Date;
 import java.util.List;
 
 @WebServlet(name = "MainController", urlPatterns = {"/MainController"})
@@ -160,12 +160,12 @@ public class MainController extends HttpServlet {
             } else if ("UpdateStock".equals(action)) {
                 // Xử lý cập nhật cổ phiếu
                 String ticker = request.getParameter("ticker");
-                String companyName = request.getParameter("companyName");
+                String sector = request.getParameter("sector");
                 double price = Double.parseDouble(request.getParameter("price"));
                 boolean status = "1".equals(request.getParameter("status"));
 
                 StockDAO dao = new StockDAO();
-                dao.updateStock(new StockDTO(0, ticker, companyName, price, status));
+                dao.updateStock(new StockDTO(0, ticker, sector, price, status));
                 request.setAttribute("MESSAGE", "Cập nhật thành công!");
                 request.setAttribute("STOCK_LIST", dao.getAllStocks());
                 url = "stockList.jsp";
@@ -373,6 +373,59 @@ public class MainController extends HttpServlet {
                     request.setAttribute("ERROR", "Xóa thất bại!");
                 }
                 url = "alertList.jsp";
+            } else if (action.equals("ListNews")) {
+                url = "newsList.jsp";
+            } else if (action.equals("AddNews")) {
+                url = "addNews.jsp";
+            } else if (action.equals("CreateNews")) {
+                String title = request.getParameter("title");
+                String content = request.getParameter("content");
+                String sectorID = request.getParameter("sectorID");
+                String dateStr = request.getParameter("publicDate");
+                Date publicDate = Date.valueOf(dateStr);
+                NewsDAO newsDAO = new NewsDAO();
+
+                newsDAO.createNews(new NewsDTO(0, title, content, sectorID, publicDate));
+                request.setAttribute("MESSAGE", "Them tin moi thanh cong");
+                request.setAttribute("NEWS_LIST", newsDAO.getAllNews());
+                url = "addNews.jsp";
+                
+            } else if (action.equals("EditNews")) {
+                int newsID = Integer.parseInt(request.getParameter("newsID"));
+                NewsDAO newsDAO = new NewsDAO();
+                request.setAttribute("EDIT_NEWS", newsDAO.getNewsByID(newsID));
+                url = "updateNews.jsp";
+            } else if (action.equals("UpdateNews")) {
+                int newsID = Integer.parseInt(request.getParameter("newsID"));
+                String title = request.getParameter("title");
+                String content = request.getParameter("content");
+                String sectorID = request.getParameter("sectorID");
+                String dateStr = request.getParameter("publicDate");
+                Date publicDate = Date.valueOf(dateStr);
+                NewsDAO newsDAO = new NewsDAO();
+                newsDAO.updateNews(new NewsDTO(newsID, title, content, sectorID, publicDate));
+                request.setAttribute("MESSAGE", "Cap nhat thanh cong");
+                request.setAttribute("NEWS_LIST", newsDAO.getAllNews());
+                url = "newsList.jsp";
+            } else if (action.equals("DeleteNews")) {
+                int newsID = Integer.parseInt(request.getParameter("newsID"));
+                NewsDAO newsDAO = new NewsDAO();
+                boolean check = newsDAO.deleteNews(newsID);
+                if (check) {
+                    request.setAttribute("MESSAGE", "Xoa tin thanh cong");
+                }
+                request.setAttribute("NEWS_LIST", newsDAO.getAllNews());
+                url = "newsList.jsp";
+            } else if (action.equals("ViewNews")) {
+                String search = request.getParameter("keyword");
+                if (search == null) {
+                    search = "";
+                }
+                NewsDAO newsDAO = new NewsDAO();
+                List<NewsDTO> newsDTOs = newsDAO.searchNews(search);
+                request.setAttribute("NEWS_LIST", newsDTOs);
+                request.setAttribute("KEYWORD", search);
+                url = "newsList.jsp";
             } else {
                 request.setAttribute("ERROR", "Chức năng không hợp lệ.");
                 url = "welcome.jsp";
